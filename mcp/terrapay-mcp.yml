@@ -1,0 +1,46 @@
+generated: '2026-07-21'
+method: derived
+status: candidate
+source: https://developers.terrapay.com/docs/ (documented API operations)
+notes: >-
+  No official hosted/remote MCP server was found for TerraPay. This is a
+  candidate tool list derived from the documented GSMA API operations so an MCP
+  wrapper could be built; source_operation references the documented HTTP path
+  (no OpenAPI spec is published on the public portal).
+server:
+  name: terrapay
+  transport: http
+tools:
+  - name: view_account_status_wallet
+    description: Check status of a mobile-money wallet account by MSISDN.
+    source_operation: "GET /eig/gsma/accounts/msisdn/{msisdn}/status"
+  - name: view_account_status_bank
+    description: Check status of a bank account.
+    source_operation: "GET /eig/gsma/accounts/{accountId}/status"
+  - name: view_account_status_card
+    description: Check status of a card account by (encrypted) PAN.
+    source_operation: "GET /eig/gsma/accounts/pan/status"
+  - name: create_quotation
+    description: Create an FX quotation for a cross-border transfer.
+    source_operation: "POST /eig/gsmaV2/quotations"
+  - name: create_transaction
+    description: Create a transaction (p2p/p2b/b2b/b2p) to a wallet, bank, or card.
+    source_operation: "POST /eig/gsma/transactions"
+  - name: get_ledger_balance
+    description: Retrieve partner ledger balance.
+    source_operation: "GET ledger balance (documented, path partner-specific)"
+  - name: cancel_transaction
+    description: Cancel a pending transaction.
+    source_operation: "Cancel Transaction (documented)"
+  - name: reverse_transaction
+    description: Reverse a completed transaction.
+    source_operation: "Reverse Transaction (documented)"
+  - name: get_statement
+    description: Retrieve transaction statements.
+    source_operation: "Statements API (documented)"
+  - name: get_bank_list
+    description: Retrieve supported bank list for a corridor.
+    source_operation: "Get Bank List (documented)"
+  - name: get_wallet_list
+    description: Retrieve supported wallet list for a corridor.
+    source_operation: "Get Wallet List (documented)"

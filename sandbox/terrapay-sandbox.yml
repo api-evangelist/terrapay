@@ -1,0 +1,28 @@
+generated: '2026-07-21'
+method: searched
+source: https://developers.terrapay.com/getStarted.html , https://developers.terrapay.com/docs/
+environments:
+  - name: Sandbox
+    base_url: null
+    notes: Initial integration/testing. API key can be reset in the developer portal.
+  - name: UAT
+    base_url: "https://uat-connect.terrapay.com:21211"
+    notes: Corridor-specific acceptance testing. API key resettable in developer portal.
+  - name: LIVE
+    base_url: null
+    notes: Production; base host issued at go-live.
+credentials:
+  model: per-partner, per-environment
+  issued: during onboarding (Username + Password); distinct API key per environment
+  reset: API key can be reset for Sandbox and UAT in the developer portal
+test_data:
+  published: false
+  notes: >-
+    TerraPay does not publish shared magic test cards / test MSISDNs. Test
+    corridors and credentials are provisioned per partner. A "Try-it" console is
+    available to registered partners to exercise APIs with different inputs and
+    to view corridor-specific test status across Sandbox and UAT. No test values
+    are fabricated here.
+try_it:
+  available_to: registered partners
+  url: https://developers.terrapay.com/try-it/b2p-transaction-bank

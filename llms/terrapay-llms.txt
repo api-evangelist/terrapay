@@ -1,0 +1,35 @@
+# TerraPay
+
+> TerraPay is a global cross-border payments and digital-wallet infrastructure company. Its API Suite lets partners (banks, wallets, MTOs, merchants) validate accounts, quote FX, and move money to mobile wallets, bank accounts, and cards across international corridors, following the GSMA Mobile Money API. Authentication uses signed request headers over mutual TLS; APIs are offered in Sandbox, UAT, and LIVE.
+
+## Developer
+- [Developer Portal](https://developers.terrapay.com/): Partner developer portal.
+- [Documentation](https://developers.terrapay.com/docs/): API Suite introduction and reference docs.
+- [API References](https://developers.terrapay.com/apiReference.html): Endpoint specifications.
+- [Get Started](https://developers.terrapay.com/getStarted.html): Environments, credentials, onboarding.
+- [Developer Guide](https://developers.terrapay.com/developerGuide.html): Integration guidance.
+- [Best Practices](https://developers.terrapay.com/bestPractice.html): Data encryption and key protection.
+
+## APIs
+- Account Validation: GET /eig/gsma/accounts/msisdn/{msisdn}/status, /eig/gsma/accounts/{accountId}/status, /eig/gsma/accounts/pan/status
+- Quotations: POST /eig/gsmaV2/quotations
+- Transactions: POST /eig/gsma/transactions (p2p/p2b/b2b/b2p)
+- Ledger Balance, Statements, Cancel, Reverse, Get Bank List, Get Wallet List, Status Notification (callbacks)
+
+## Conventions
+- Auth: X-USERNAME, X-PASSWORD (SHA-256), X-DATE (UTC), X-ORIGINCOUNTRY headers; X-PAN RSA/OAEP for cards; mutual TLS + S2S VPN/IP whitelist.
+- Idempotency: partner requestingOrganisationTransactionReference dedup.
+- Errors: GSMA-style envelope (serverCorrelationId, error.errorCategory/errorCode/errorDescription).
+- Versioning: uri-path (gsma, gsmaV2).
+
+## Repo artifacts
+- authentication/terrapay-authentication.yml
+- conventions/terrapay-conventions.yml
+- errors/terrapay-problem-types.yml
+- conformance/terrapay-conformance.yml
+- lifecycle/terrapay-lifecycle.yml
+- mcp/terrapay-mcp.yml
+- sandbox/terrapay-sandbox.yml
+- asyncapi/terrapay-notifications-webhooks.yml
+- data-model/terrapay-data-model.yml
+- security/terrapay-domain-security.yml

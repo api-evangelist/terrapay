@@ -1,0 +1,31 @@
+generated: '2026-07-21'
+method: derived
+source: https://developers.terrapay.com/docs/ (endpoint paths + schemas), best-practice/get-started pages
+standards:
+  - id: gsma-mobile-money-api
+    conforms: true
+    evidence: >-
+      API paths and schemas follow the GSMA Mobile Money API (/eig/gsma and
+      /eig/gsmaV2): accounts/{id}/status, quotations, transactions with
+      debitParty/creditParty, internationalTransferInformation, KYC blocks.
+  - id: tls-https-required
+    conforms: true
+    evidence: All APIs require HTTPS with CA-issued SSL certificates (get-started).
+  - id: mutual-tls
+    conforms: true
+    evidence: Connectivity over S2S VPN tunnel or IP whitelist with mutually authenticated certificates.
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: Errors use a custom GSMA-style envelope, not application/problem+json.
+  - id: oauth2
+    conforms: false
+    evidence: Authentication is signed request headers, not OAuth2.
+  - id: iso8601-timestamps
+    conforms: partial
+    evidence: Timestamps use "YYYY-MM-DD HH:mm:ss" (UTC), a space-separated variant rather than strict ISO 8601 'T'.
+compliance_program:
+  published: false
+  notes: >-
+    TerraPay describes compliance/monitoring/reconciliation as built into its
+    platform, but no named certification (PCI DSS / ISO 27001 / SOC 2) is
+    published on the public developer or security surface; none asserted here.

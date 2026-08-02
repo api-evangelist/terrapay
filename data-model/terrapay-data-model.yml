@@ -1,0 +1,38 @@
+generated: '2026-07-21'
+method: derived
+source: https://developers.terrapay.com/docs/ (documented resources; no OpenAPI published)
+notes: >-
+  Entity graph derived from the documented GSMA API resources. No OpenAPI $ref
+  graph exists on the public portal; relationships reflect documented request
+  bodies (debitParty/creditParty, quoteId linkage, transaction references).
+entities:
+  - name: Account
+    description: A payout/payin instrument — mobile wallet (MSISDN), bank account (accountId), or card (PAN).
+    identifiers: [msisdn, accountId, pan]
+  - name: Quotation
+    description: An FX quote for a transfer, with expiry and rate.
+    identifiers: [quoteId]
+  - name: Transaction
+    description: A money movement (p2p/p2b/b2b/b2p) between a debitParty and creditParty.
+    identifiers: [transactionReference, requestingOrganisationTransactionReference]
+  - name: LedgerBalance
+    description: Partner ledger balance position.
+  - name: Statement
+    description: Record of transactions over a period.
+relationships:
+  - from: Transaction
+    to: Quotation
+    type: belongs_to
+    via: quoteId
+  - from: Transaction
+    to: Account
+    type: has_one
+    via: debitParty
+  - from: Transaction
+    to: Account
+    type: has_one
+    via: creditParty
+  - from: Statement
+    to: Transaction
+    type: has_many
+    via: transactionReference

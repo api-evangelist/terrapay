@@ -1,0 +1,46 @@
+generated: '2026-07-21'
+method: searched
+source: https://developers.terrapay.com/docs/ (Introduction / Developer Guide / API References)
+api: TerraPay API Suite (GSMA Mobile Money API profile)
+authentication:
+  style: signed request headers over mutual TLS
+  ref: authentication/terrapay-authentication.yml
+idempotency:
+  supported: true
+  style: partner-transaction-reference dedup
+  field: requestingOrganisationTransactionReference
+  scope: per partner transaction
+  notes: >-
+    TerraPay does not document a dedicated Idempotency-Key header. Duplicate
+    submissions are detected/prevented via the partner-supplied
+    requestingOrganisationTransactionReference on transaction creation, which is
+    the GSMA Mobile Money API idempotency mechanism.
+pagination:
+  supported: false
+  notes: Account/quotation/transaction responses return single objects or bounded arrays; no cursor/offset pagination documented.
+request_tracing:
+  request_id_field: clientCorrelationId
+  response_id_field: serverCorrelationId
+  notes: Every response carries serverCorrelationId (and echoes clientCorrelationId) for tracing/support.
+versioning:
+  scheme: uri-path
+  examples: ["/eig/gsma/...", "/eig/gsmaV2/quotations", corridor quotation V2/V3]
+  ref: lifecycle/terrapay-lifecycle.yml
+timestamps:
+  format: "YYYY-MM-DD HH:mm:ss"
+  timezone: UTC
+error_envelope:
+  ref: errors/terrapay-problem-types.yml
+  shape:
+    serverCorrelationId: string
+    clientCorrelationId: string
+    error:
+      errorCategory: "authorisation | businessRule"
+      errorCode: numeric
+      errorDescription: string
+      errorDateTime: "YYYY-MM-DD HH:mm:ss"
+rate_limit_signaling:
+  documented: false
+encryption:
+  field_level: PAN encrypted RSA/ECB/OAEPWithSHA-256 (X-PAN header)
+  transport: HTTPS with CA-issued SSL certificates; S2S VPN or IP whitelist

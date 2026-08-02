@@ -1,0 +1,18 @@
+generated: '2026-07-21'
+method: searched
+source: https://developers.terrapay.com/docs/ (Status Notification API)
+spec_type: Webhooks
+notes: >-
+  TerraPay does not publish an AsyncAPI document. It documents an asynchronous
+  callback surface — the Status Notification API — through which TerraPay
+  notifies the partner of transaction state changes. Captured here as a webhook
+  catalog; no AsyncAPI is fabricated.
+delivery:
+  style: server-to-server HTTP callback (partner-hosted notification endpoint)
+  security: same signed-header + mutual-TLS model as inbound APIs
+events:
+  - name: transaction.status
+    description: >-
+      Asynchronous status notification for a transaction as it moves through
+      processing/settlement (e.g. accepted, completed, failed, reversed).
+    payload_ref: errors/terrapay-problem-types.yml (shares serverCorrelationId / status envelope conventions)

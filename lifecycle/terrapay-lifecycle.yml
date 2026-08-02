@@ -1,0 +1,23 @@
+generated: '2026-07-21'
+method: searched
+source: https://developers.terrapay.com/docs/ , https://developers.terrapay.com/getStarted.html
+versioning:
+  scheme: uri-path
+  current: gsmaV2
+  examples: ["/eig/gsma/*", "/eig/gsmaV2/quotations", "corridor quotation V2 and V3"]
+  docs: https://developers.terrapay.com/apiReference.html
+environments:
+  - name: Sandbox
+    purpose: initial integration/testing; API key resettable in developer portal
+  - name: UAT
+    purpose: corridor-specific acceptance testing; base host uat-connect.terrapay.com:21211
+  - name: LIVE
+    purpose: production
+deprecation:
+  policy_url: null
+  sunset_header: false
+  notes: No public deprecation/Sunset (RFC 8594) policy documented.
+sla:
+  url: null
+status_page: null
+deprecated_operations: []

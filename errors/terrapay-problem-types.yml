@@ -1,0 +1,24 @@
+generated: '2026-07-21'
+method: searched
+source: https://developers.terrapay.com/docs/ (API References — error response schema)
+format: custom-envelope
+notes: >-
+  TerraPay does not use RFC 9457 (application/problem+json). Errors are returned
+  in a GSMA-style envelope. The specific numeric errorCode registry is not
+  published on the public developer portal (issued to onboarded partners); only
+  the envelope shape and error categories are captured here — no codes are
+  fabricated.
+envelope:
+  fields:
+    serverCorrelationId: string
+    clientCorrelationId: string
+    error:
+      errorCategory: string
+      errorCode: numeric
+      errorDescription: string
+      errorDateTime: "YYYY-MM-DD HH:mm:ss"
+categories:
+  - id: authorisation
+    description: Authentication/authorization failures (bad credentials, IP not whitelisted, expired timestamp, signature/encryption error).
+  - id: businessRule
+    description: Business validation failures (invalid corridor, KYC/limit breach, unsupported instrument, expired quotation, duplicate reference, insufficient ledger balance).

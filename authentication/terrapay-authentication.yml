@@ -1,0 +1,52 @@
+generated: '2026-07-21'
+method: searched
+source: https://developers.terrapay.com/docs/ (Introduction / Developer Guide / Get Started)
+summary:
+  types: [apiKey, custom-signed-headers, mutualTLS]
+  api_key_in: [header]
+  oauth2_flows: []
+  notes: >-
+    TerraPay does not use OAuth2. Partners authenticate with a set of signed
+    request headers over a mutually-authenticated TLS channel (CA-issued SSL
+    certificates) reached via a site-to-site VPN tunnel or IP whitelist. API
+    credentials (username + password) are issued per partner during onboarding
+    and are distinct for each environment (Sandbox, UAT, LIVE); keys can be
+    reset/rotated in the developer portal.
+schemes:
+  - name: X-USERNAME
+    type: apiKey
+    in: header
+    description: Partner username (case-insensitive), issued at onboarding.
+    sources: [https://developers.terrapay.com/docs/]
+  - name: X-PASSWORD
+    type: apiKey
+    in: header
+    description: SHA-256 encoded partner password (case-insensitive).
+    sources: [https://developers.terrapay.com/docs/]
+  - name: X-DATE
+    type: apiKey
+    in: header
+    description: Request timestamp in "YYYY-MM-DD HH:mm:ss" format, UTC.
+    sources: [https://developers.terrapay.com/docs/]
+  - name: X-ORIGINCOUNTRY
+    type: apiKey
+    in: header
+    description: ISO Alpha-2 country code of the country where the transaction originates.
+    sources: [https://developers.terrapay.com/docs/]
+  - name: X-PAN
+    type: apiKey
+    in: header
+    description: >-
+      For card (PAN) operations, the PAN is field-level encrypted with
+      RSA/ECB/OAEPWithSHA-256 before being sent in this header.
+    sources: [https://developers.terrapay.com/docs/]
+  - name: mutual-tls
+    type: mutualTLS
+    description: >-
+      All APIs require HTTPS with CA-issued SSL certificates; connectivity is
+      over a site-to-site VPN tunnel or IP-whitelisted channel.
+    sources: [https://developers.terrapay.com/getStarted.html]
+key_management:
+  per_environment_keys: true
+  rotation: recommended (reset/regenerate in the developer portal on a rolling basis)
+  environments: [Sandbox, UAT, LIVE]

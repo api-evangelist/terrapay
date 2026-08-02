@@ -1,8 +1,30 @@
 aid: terrapay
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/terrapay.png
 name: TerraPay
-description: 'TerraPay is a company surfaced as a portfolio company of partech and added to the API Evangelist
-  network as a stub for enrichment. Sector: Financial Services. This profile is a lead awaiting the enrichment
-  pipeline.'
+description: >-
+  TerraPay is a global cross-border payments and digital-wallet infrastructure
+  company connecting banks, mobile wallets, money-transfer operators, merchants,
+  and card networks into a single interoperable network for real-time
+  international money movement. Its partner API Suite follows the GSMA Mobile
+  Money API, exposing account validation, FX quotations, and multi-rail
+  transactions (wallet, bank account, and card) across global remittance
+  corridors, with compliance, monitoring, reconciliation, and reporting built
+  into the platform. Partners authenticate with signed request headers over
+  mutual TLS across Sandbox, UAT, and LIVE environments. Added to the API
+  Evangelist network from the Partech portfolio and enriched from TerraPay's
+  public developer portal.
 url: https://raw.githubusercontent.com/api-evangelist/terrapay/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -12,16 +34,78 @@ x-tier: stub
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-21'
 tags:
 - Company
 - Financial Services
-apis: []
+- Payments
+- Cross-Border Payments
+- Remittances
+- Mobile Money
+- Digital Wallets
+- Money Transfer
+- Fintech
+- GSMA Mobile Money API
+apis:
+- name: TerraPay API Suite
+  description: >-
+    GSMA Mobile Money API profile for account validation, FX quotations, and
+    multi-rail money movement (wallet/bank/card) across international corridors.
+  humanURL: https://developers.terrapay.com/docs/
+  baseURL: https://uat-connect.terrapay.com:21211
+  tags:
+  - Payments
+  - Cross-Border Payments
+  - Mobile Money
+  properties:
+  - type: Documentation
+    url: https://developers.terrapay.com/docs/
+  - type: APIReference
+    url: https://developers.terrapay.com/apiReference.html
+  - type: GettingStarted
+    url: https://developers.terrapay.com/getStarted.html
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+x-enrichment:
+  date: '2026-07-21'
+  status: enriched
+  artifacts_added: 11
+  pass: local-v1
 common:
 - type: Website
   url: https://www.terrapay.com/
+- type: DeveloperPortal
+  url: https://developers.terrapay.com/
+- type: Documentation
+  url: https://developers.terrapay.com/docs/
+- type: APIReference
+  url: https://developers.terrapay.com/apiReference.html
+- type: GettingStarted
+  url: https://developers.terrapay.com/getStarted.html
+- type: Authentication
+  url: authentication/terrapay-authentication.yml
+- type: Conventions
+  url: conventions/terrapay-conventions.yml
+- type: Idempotency
+  url: conventions/terrapay-conventions.yml
+- type: ErrorCatalog
+  url: errors/terrapay-problem-types.yml
+- type: Conformance
+  url: conformance/terrapay-conformance.yml
+- type: Lifecycle
+  url: lifecycle/terrapay-lifecycle.yml
+- type: MCPServer
+  url: mcp/terrapay-mcp.yml
+- type: LLMsTxt
+  url: llms/terrapay-llms.txt
+- type: Sandbox
+  url: sandbox/terrapay-sandbox.yml
+- type: Webhooks
+  url: asyncapi/terrapay-notifications-webhooks.yml
+- type: DataModel
+  url: data-model/terrapay-data-model.yml
+- type: DomainSecurity
+  url: security/terrapay-domain-security.yml
